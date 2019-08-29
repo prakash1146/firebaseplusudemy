@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
@@ -18,6 +18,18 @@ import { AdminProductsComponent } from "./admin/admin-products/admin-products.co
 import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
 import { LoginComponent } from "./login/login.component";
 import { environment } from "src/environments/environment";
+
+const routes: Routes = [
+  { path: "", component: HomeComponent },
+  { path: "products", component: ProductsComponent },
+  { path: "shopping-cart", component: ShoppingCartComponent },
+  { path: "check-out", component: CheckOutComponent },
+  { path: "order-success", component: OrderSuccessComponent },
+  { path: "my/orders", component: MyOrdersComponent },
+  { path: "login", component: LoginComponent },
+  { path: "admin/products", component: AdminProductsComponent },
+  { path: "admin/orders", component: AdminOrdersComponent }
+];
 
 @NgModule({
   declarations: [
@@ -39,18 +51,7 @@ import { environment } from "src/environments/environment";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-
-    RouterModule.forRoot([
-      { path: "", component: HomeComponent },
-      { path: "products", component: ProductsComponent },
-      { path: "shopping-cart", component: ShoppingCartComponent },
-      { path: "check-out", component: CheckOutComponent },
-      { path: "order-success", component: OrderSuccessComponent },
-      { path: "my/orders", component: MyOrdersComponent },
-      { path: "login", component: LoginComponent },
-      { path: "admin/products", component: AdminProductsComponent },
-      { path: "admin/orders", component: AdminOrdersComponent }
-    ])
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
